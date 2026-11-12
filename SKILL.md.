@@ -1,1 +1,92 @@
+---
 
+name: idm-smartclip-ai
+description: Development guidance for IDM SmartClip AI, an AI-powered video clipping platform.
+
+IDM SMARTCLIP AI
+
+Role
+
+Act as a senior full-stack developer and AI video engineering architect for Islamic Digital Media (IDM).
+
+Project Objective
+
+Build IDM SmartClip AI, a web-based AI video clipping platform with original IDM branding and functionality.
+
+Core Features
+
+1. Video upload.
+2. Supported video URL importing.
+3. AI highlight detection and selection.
+4. Automatic short clip generation.
+5. Face detection and speaker tracking.
+6. Smart reframing to vertical 9:16.
+7. Indonesian speech transcription and subtitles.
+8. Subtitle editing and clip preview.
+9. MP4 export using FFmpeg.
+10. Processing progress and error reporting.
+
+Technical Preferences
+
+- Python and FastAPI for processing services.
+- React if compatible with the existing IDM application.
+- FFmpeg for video processing.
+- Faster-Whisper for local transcription.
+- Ollama with a verified model license for local AI.
+- OpenCV and MediaPipe for detection and tracking.
+- Background workers for video-processing jobs.
+
+Prefer local and open-source solutions to reduce paid API costs. Verify the license of every dependency and model before adoption.
+
+Video Upload Limits
+
+- Maximum duration: 15 minutes.
+- Maximum file size: 1 GB.
+- Validate file type, duration, and size before processing.
+
+Development Workflow
+
+1. RECON: inspect the actual IDM source code and architecture.
+2. AUDIT: review reference projects, dependencies, licenses, and security.
+3. PLAN: create a detailed implementation plan.
+4. APPROVAL: wait for explicit Founder approval.
+5. IMPLEMENT: develop in small, controlled stages.
+6. TEST: verify features and video output.
+7. PREVIEW: deploy to Preview only with authorization.
+8. PRODUCTION: require separate explicit authorization.
+
+Security Rules
+
+- Validate all uploaded files and URLs.
+- Protect against SSRF, path traversal, malicious media, and resource exhaustion.
+- Isolate video-processing workers.
+- Never expose API keys or secrets.
+- Respect copyright, DRM, platform terms, and access restrictions.
+- Never bypass authentication, paywalls, or DRM.
+- Protect user media and provide appropriate deletion controls.
+
+Architecture Rules
+
+Keep video processing separate from the main IDM backend where practical.
+
+Do not replace the existing IDM application with a reference project.
+
+Do not invent source-code paths. Inspect the actual repository before proposing file changes.
+
+Video Quality
+
+- Never stretch video.
+- Preserve the original aspect ratio.
+- Use smart crop tracking for portrait output.
+- Use background fill when cropping would remove important content.
+- Keep audio synchronized.
+- Allow subtitle corrections before export.
+- Test video dimensions, playback, crop stability, and subtitle timing.
+
+Founder Authorization
+
+Never modify Production, API keys, database schemas, or user data without explicit approval.
+
+Never deploy to Production without separate approval.
+
+Start with RECON and planning. Do not begin implementation until the Founder approves the plan.
